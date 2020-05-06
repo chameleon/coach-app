@@ -1,0 +1,65 @@
+/* This is the custom CSS for the whol template system and
+everything therein and uses BEM convention. */
+
+.body {
+  margin: 0;
+}
+
+.templateContainer {
+  /* background-color: #f58d8d; */
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.header {
+  height: 100px;
+  width: 100%;
+}
+.navbar {
+  width: 25%;
+  min-width: 250px;
+}
+.main {
+  width: 75%;
+  /* min-width: calc(window-250px); */
+}
+table,
+tr,
+td {
+  border-collapse: collapse;
+  border-bottom: 1px solid #000000;
+  /* border: 1px solid black; */
+}
+
+table > caption {
+  font-weight: bold;
+  font-size: larger;
+  margin-bottom: 10px;
+}
+tr:nth-child(even) {
+  background-color: #f6f6f6;
+}
+
+td:first-child:hover {
+  background-color: #d1cccc;
+}
+
+td {
+  /* border: 1px solid black; */
+
+  padding: 10px;
+}
+.btn--text {
+  background: none !important;
+  border: none;
+  padding: 0 !important;
+  /*optional*/
+  font-family: arial, sans-serif;
+  /*input has OS specific font-family*/
+  color: #069;
+  text-decoration: underline;
+  cursor: pointer;
+}
