@@ -7,7 +7,7 @@ class TemplateContainer extends Component {
   render() {
     return (
       <div className="templateContainer">
-        {/* This container gets thing liek <Students /> loaded dynamically but hardcode here */}
+        {/* This container gets thing like <Students /> loaded dynamically but hardcode here */}
         <Students />
         {/* <div>spacer</div> */}
         <StudentDetails id="5b21ca3eeb7f6fbccd471817" />
