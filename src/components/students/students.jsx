@@ -1,23 +1,41 @@
 import React, {Component} from "react";
-import Student from "./student"; //No {} around Student since default
+import Button from "../button/button";
+import {getStudents} from "../../services/fakeStudentService";
 
-import {getStudents} from "../services/fakeStudentService";
+var formatPhoneNumber = require("../../utils/utils.js").formatPhoneNumber;
+// import {formatPhoneNumber} from "../../utils/utils";
+
 // import Student from './student';
 
 class App extends Component {
   state = {
+    //Initialized by a call to a service (imported above)
     students: getStudents(),
-  };
 
+    //Sometimes this state is initializd by props from what called it or at least ID
+  };
+  //
+  //placeholder
   do = () => alert("did");
+  //
 
   renderStudentList() {
     // console.log("Students", this.state.students);
+  }
+
+  render() {
     return (
       <>
-        <Student id="44444" studentName="Mack" />
-        <table>
-          <caption>List of Students</caption>
+        <table className="table">
+          <caption>
+            List of Students
+            <Button
+              label="Click ME"
+              action={this.do}
+              cssClassList="btn btn--red btn-lg"
+            />
+          </caption>
+
           <thead>
             <tr>
               <th scope="col">Name</th>
@@ -31,17 +49,20 @@ class App extends Component {
             </tr>
           </thead>
           <tbody>
+            {/* Loop through the sudent object in state */}
             {this.state.students.map(student => (
               <tr key={student._id}>
                 <td>
-                  <button className="btn--text" onClick={this.do}>
+                  <Button cssClassList="btn btn--text" action={this.do}>
                     {student.name}
-                  </button>
+                  </Button>
                 </td>
                 <td>{student.subject.name}</td>
                 <td>
                   <a href={"tel: " + student.phoneNumber}>
-                    {this.formatPhoneNumber(student.phoneNumber)}
+                    {/* {student.phoneNumber} */}
+                    {formatPhoneNumber(student.phoneNumber)}
+                    {/* {this.state.formattedPhoneNumber} */}
                   </a>
                 </td>
                 <td>
@@ -57,20 +78,6 @@ class App extends Component {
         </table>
       </>
     );
-  }
-
-  formatPhoneNumber(phoneNumberString) {
-    // assummes 10 numbers only
-    var cleaned = ("" + phoneNumberString).replace(/\D/g, "");
-    var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
-    if (match) {
-      return "(" + match[1] + ")" + match[2] + "-" + match[3];
-    }
-    return null;
-  }
-
-  render() {
-    return <>{this.renderStudentList()}</>;
   }
 }
 

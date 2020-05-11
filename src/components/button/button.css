@@ -1,0 +1,25 @@
+.btn {
+  /* width: 100%; */
+  /* margin:  in BEM, exterior concerns not handled by component-level css */
+  padding: 1rem 10%;
+  border-radius: 420px;
+  font-size: 1.6rem;
+  font-weight: 900;
+}
+
+.btn--red {
+  background-color: #ff0000;
+  color: #ffffff;
+}
+
+.btn--text {
+  background: none !important;
+  border: none;
+  padding: 0 !important;
+  /*optional*/
+  font-family: arial, sans-serif;
+  /*input has OS specific font-family*/
+  color: #069;
+  text-decoration: underline;
+  cursor: pointer;
+}
