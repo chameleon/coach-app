@@ -1,8 +1,10 @@
 import React, {Component} from "react";
 import "./button.css"; // had:   import style from "./button.css";
 //extra level of abstraction that doesn't save any typing in reuse.
+//Basically an example stateless component.
 class Button extends Component {
-  state = {}; //stateless
+  // state = {}; //stateless
+
   render() {
     return (
       <button onClick={this.props.action} className={this.props.cssClassList}>

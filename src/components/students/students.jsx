@@ -2,26 +2,20 @@ import React, {Component} from "react";
 import Button from "../button/button";
 import {getStudents} from "../../services/fakeStudentService";
 
-var formatPhoneNumber = require("../../utils/utils.js").formatPhoneNumber;
-// import {formatPhoneNumber} from "../../utils/utils";
-
-// import Student from './student';
+//Grab a function from external file.
+var formatPhoneNumber = require("../../util/util.js").formatPhoneNumber;
 
 class App extends Component {
   state = {
-    //Initialized by a call to a service (imported above)
-    students: getStudents(),
-
-    //Sometimes this state is initializd by props from what called it or at least ID
+    students: getStudents(), //Initialized by a call to a service (imported above)
+    //Sometimes this state is initializd by props from
+    //what called it or at least the ID for that
   };
   //
   //placeholder
   do = () => alert("did");
   //
-
-  renderStudentList() {
-    // console.log("Students", this.state.students);
-  }
+  editStudent = () => alert("show");
 
   render() {
     return (
@@ -44,25 +38,26 @@ class App extends Component {
               <th scope="col">Email</th>
               <th scope="col">Session length</th>
               <th scope="col">Session Price</th>
-
               {/* <th scope="col">Reg Date</th> */}
             </tr>
           </thead>
           <tbody>
             {/* Loop through the sudent object in state */}
+
             {this.state.students.map(student => (
               <tr key={student._id}>
                 <td>
-                  <Button cssClassList="btn btn--text" action={this.do}>
-                    {student.name}
-                  </Button>
+                  <Button
+                    cssClassList="btn btn--text"
+                    action={this.editStudent}
+                    label={student.name}
+                  />
                 </td>
                 <td>{student.subject.name}</td>
                 <td>
                   <a href={"tel: " + student.phoneNumber}>
-                    {/* {student.phoneNumber} */}
+                    {/* Raw, common function call */}
                     {formatPhoneNumber(student.phoneNumber)}
-                    {/* {this.state.formattedPhoneNumber} */}
                   </a>
                 </td>
                 <td>
